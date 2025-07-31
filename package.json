@@ -1,7 +1,7 @@
 {
   "name": "bookbliss",
   "version": "1.0.0",
-  "main": "main.html",
+  "main": "Index.html",
   "window": {
     "width": 1000,
     "height": 700,
