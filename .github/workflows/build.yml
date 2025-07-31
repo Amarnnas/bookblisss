@@ -1,30 +1,28 @@
 name: Build Windows EXE
-
 on:
   push:
     branches: [ "main" ]
-
 jobs:
   build:
     runs-on: windows-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-
+      - name: List files for debugging
+        # هذه الخطوة تساعدك على التأكد من وجود ملفاتك في المسار الصحيح
+        run: ls -R
       - name: Install NW.js Builder
         run: npm install --save-dev nw-builder@latest
-
       - name: Build Windows EXE
+        # ⚠️ هذا الأمر يفترض أن ملفاتك في المجلد الرئيسي.
+        # إذا كانت في مجلد فرعي، استبدل './' باسم المجلد، مثلاً: './src/'
         run: npx nwbuild --platform win64 --arch x64 --mode build ./
-
       - name: Upload EXE as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: bookbliss-exe
+          name: bookbliss
           path: build/
