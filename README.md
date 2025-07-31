@@ -1,200 +1,465 @@
 # Sales & Expense Management System (C++)
 
-نظام إدارة المبيعات والمصروفات - C++ Console Application
+**نظام إدارة المبيعات والمصروفات - C++ Console Application**
 
-A comprehensive sales and expense management system converted from HTML/JavaScript to C++. This console application provides the same functionality as the original web-based system with a text-based interface.
+A comprehensive sales and expense management system converted from HTML/JavaScript to C++. This console application provides the same functionality as the original web-based system with a cross-platform text-based interface.
 
-## Features
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![C++](https://img.shields.io/badge/C%2B%2B-11-blue.svg)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)
+
+## 📋 Table of Contents
+- [Features](#-features)
+- [Requirements](#-requirements)
+- [Installation](#-installation)
+- [Building](#-building)
+- [Usage](#-usage)
+- [File Structure](#-file-structure)
+- [Arabic Support](#-arabic-support)
+- [Troubleshooting](#-troubleshooting)
+- [Contributing](#-contributing)
+
+## 🚀 Features
 
 ### 🛒 Sales Management (تسجيل المبيعات)
-- Add products to shopping cart
-- View current cart with totals
-- Remove items from cart
-- Complete sales with cash or credit payment
-- Generate and print invoices
-- Customer name tracking for credit sales
+- **Shopping Cart System**: Add/remove products with quantity control
+- **Real-time Calculations**: Automatic total calculation with tax support
+- **Payment Methods**: Cash and credit payment options
+- **Invoice Generation**: Professional invoice printing with unique IDs
+- **Customer Tracking**: Customer name recording for credit sales
+- **Stock Validation**: Automatic stock level checking before sales
 
 ### 📦 Inventory Management (إدارة المخزون)
-- Add new products with name, price, and stock quantity
-- View all products with low stock warnings
-- Edit existing product information
-- Delete products from inventory
-- Automatic stock updates after sales
+- **Product Database**: Complete product information management
+- **Stock Monitoring**: Real-time stock level tracking
+- **Low Stock Alerts**: Automatic warnings for products below threshold
+- **Bulk Operations**: Add, edit, delete multiple products
+- **Price Management**: Flexible pricing with currency support (EGP)
+- **Auto-ID Generation**: Unique product ID assignment
 
 ### 💰 Expense Management (المصروفات)
-- Record new expenses with description and amount
-- View all recorded expenses
-- Delete expense records
-- Track total expenses
+- **Expense Tracking**: Comprehensive expense recording system
+- **Categorization**: Detailed expense descriptions and amounts
+- **Date Stamping**: Automatic timestamp for all transactions
+- **Expense Reports**: Total expense calculations and summaries
+- **Delete Protection**: Confirmation dialogs for data safety
 
-### 📊 Reports (التقارير)
-- Daily sales and expense reports
-- Complete sales history
-- Financial summary (revenue, expenses, net income)
-- Best-selling products analysis
-- Credit sales tracking (outstanding debts)
+### 📊 Advanced Reports (التقارير)
+- **Daily Reports**: Complete daily sales and expense analysis
+- **Financial Summaries**: Revenue, expenses, and profit calculations
+- **Sales Analytics**: Best-selling products and trends
+- **Credit Management**: Outstanding debt tracking and customer reports
+- **Custom Periods**: Flexible date range reporting
+- **Export Ready**: Data formatted for external analysis
 
 ### 💾 Data Management
-- Automatic data persistence to JSON file
-- Export/import functionality
-- Clear all data option
-- Sample data initialization
+- **JSON Storage**: Human-readable data persistence
+- **Auto-Save**: Automatic data backup after each operation
+- **Export/Import**: Full data portability between systems
+- **Data Integrity**: Validation and error checking
+- **Backup Support**: Manual data export for safety
 
-## Requirements
+## 🔧 Requirements
 
-- C++11 compatible compiler (GCC, Clang, MSVC)
-- CMake 3.10 or higher (optional, for building)
+### System Requirements
+- **Operating System**: Windows 10+, Linux (Ubuntu 18.04+), macOS 10.14+
+- **Memory**: Minimum 512MB RAM
+- **Storage**: 50MB free disk space
+- **Terminal**: UTF-8 compatible terminal (for Arabic text support)
 
-## Building the Application
+### Development Requirements
+- **C++ Compiler**: 
+  - GCC 7.0+ (Linux/macOS)
+  - Clang 6.0+ (macOS/Linux)
+  - MSVC 2017+ (Windows)
+  - MinGW-w64 8.0+ (Windows alternative)
+- **CMake**: Version 3.10 or higher (optional but recommended)
+- **Build Tools**: 
+  - Make (Linux/macOS)
+  - Ninja (optional, faster builds)
+  - MSBuild (Windows with Visual Studio)
 
-### Method 1: Using CMake (Recommended)
+### Runtime Dependencies
+- **Standard Libraries**: STL (included with C++ compiler)
+- **No External Dependencies**: Self-contained application
+
+## 📥 Installation
+
+### Quick Start (Pre-compiled)
+```bash
+# Clone the repository
+git clone <repository-url>
+cd sales-management-system
+
+# Make executable (Linux/macOS)
+chmod +x sales_system
+
+# Run the application
+./sales_system
+```
+
+### From Source
+```bash
+# Clone the repository
+git clone <repository-url>
+cd sales-management-system
+
+# Build using method 1 or 2 below
+```
+
+## 🔨 Building
+
+### Method 1: Direct Compilation (Recommended for single file)
+
+#### Linux/macOS:
+```bash
+# Standard build
+g++ -std=c++11 -Wall -Wextra -o sales_system main.cpp
+
+# Optimized build
+g++ -std=c++11 -O3 -Wall -Wextra -o sales_system main.cpp
+
+# Debug build
+g++ -std=c++11 -g -Wall -Wextra -o sales_system main.cpp
+```
+
+#### Windows (MinGW):
+```cmd
+g++ -std=c++11 -Wall -Wextra -o sales_system.exe main.cpp
+```
+
+#### Windows (MSVC):
+```cmd
+cl /EHsc /std:c++11 main.cpp /Fe:sales_system.exe
+```
+
+### Method 2: CMake Build (Recommended for development)
 
 ```bash
 # Create build directory
 mkdir build
 cd build
 
-# Generate build files
+# Configure build
 cmake ..
 
-# Build the application
+# Alternative configuration with specific generator
+cmake -G "Unix Makefiles" ..        # Linux/macOS
+cmake -G "Visual Studio 16 2019" .. # Windows with VS2019
+cmake -G "Ninja" ..                  # Fast builds with Ninja
+
+# Build the project
 cmake --build .
 
+# Build with specific configuration
+cmake --build . --config Release    # Release build
+cmake --build . --config Debug      # Debug build
+
 # Run the application
-./bin/sales_system  # Linux/Mac
-.\bin\sales_system.exe  # Windows
+./bin/sales_system                   # Linux/macOS
+.\bin\sales_system.exe               # Windows
 ```
 
-### Method 2: Direct Compilation
-
+### Build Options
 ```bash
-# Using GCC/Clang
-g++ -std=c++11 -Wall -Wextra -o sales_system main.cpp
+# Clean build
+cmake --build . --target clean
 
-# Using MSVC (Windows)
-cl /EHsc main.cpp /Fe:sales_system.exe
+# Verbose build (see compilation commands)
+cmake --build . --verbose
 
-# Run the application
-./sales_system  # Linux/Mac
-.\sales_system.exe  # Windows
+# Parallel build (faster)
+cmake --build . -j 4  # Use 4 cores
 ```
 
-## Usage
+## 🖥️ Usage
 
-1. **Start the Application**: Run the compiled executable
-2. **Navigation**: Use the numbered menu options to navigate between sections
-3. **Data Entry**: Follow the prompts to enter product information, sales data, or expenses
-4. **Reports**: Access various reports from the Reports menu
-5. **Data Persistence**: All data is automatically saved to `sales_data.json`
+### Starting the Application
+```bash
+./sales_system              # Linux/macOS
+.\sales_system.exe           # Windows
+```
+
+### Navigation
+- Use **number keys** to select menu options
+- Press **Enter** to confirm selections
+- Follow on-screen prompts for data entry
+- Use **0** to go back or exit from any menu
 
 ### Menu Structure
+```
+Main Menu (القائمة الرئيسية)
+├── 1. Sales Management (تسجيل المبيعات)
+│   ├── 1. Add Product to Cart
+│   ├── 2. View Current Cart
+│   ├── 3. Remove from Cart
+│   ├── 4. Complete Sale
+│   ├── 5. Clear Cart
+│   └── 0. Back to Main Menu
+├── 2. Inventory Management (إدارة المخزون)
+│   ├── 1. Add New Product
+│   ├── 2. View All Products
+│   ├── 3. Edit Product
+│   ├── 4. Delete Product
+│   └── 0. Back to Main Menu
+├── 3. Expense Management (المصروفات)
+│   ├── 1. Add New Expense
+│   ├── 2. View All Expenses
+│   ├── 3. Delete Expense
+│   └── 0. Back to Main Menu
+├── 4. Reports (التقارير)
+│   ├── 1. Daily Report
+│   ├── 2. All Sales Report
+│   ├── 3. Financial Summary
+│   ├── 4. Best Selling Products
+│   ├── 5. Credit Sales (Debts)
+│   └── 0. Back to Main Menu
+├── 5. Data Management
+│   ├── 1. Export Data
+│   ├── 2. Import Data
+│   ├── 3. Clear All Data
+│   └── 0. Back to Main Menu
+└── 0. Exit
+```
+
+### Sample Workflow
+
+#### 1. Initial Setup
+```
+1. Start the application
+2. Go to Inventory Management (2)
+3. Add your products (1)
+   - Enter product name
+   - Set price in EGP
+   - Set initial stock quantity
+4. Repeat for all products
+```
+
+#### 2. Making a Sale
+```
+1. Go to Sales Management (1)
+2. Add products to cart (1)
+   - Select product by ID
+   - Enter quantity
+3. Review cart (2)
+4. Complete sale (4)
+   - Choose payment method (Cash/Credit)
+   - Enter customer name (if credit)
+5. Print invoice
+```
+
+#### 3. Recording Expenses
+```
+1. Go to Expense Management (3)
+2. Add new expense (1)
+   - Enter description
+   - Enter amount in EGP
+3. View all expenses (2)
+```
+
+#### 4. Viewing Reports
+```
+1. Go to Reports (4)
+2. Select report type:
+   - Daily Report (1): Today's sales and expenses
+   - Financial Summary (3): Overall business performance
+   - Best Sellers (4): Top-selling products
+   - Credit Sales (5): Outstanding debts
+```
+
+## 📁 File Structure
 
 ```
-Main Menu
-├── 1. Sales Management
-│   ├── Add Product to Cart
-│   ├── View Current Cart
-│   ├── Remove from Cart
-│   ├── Complete Sale
-│   └── Clear Cart
-├── 2. Inventory Management
-│   ├── Add New Product
-│   ├── View All Products
-│   ├── Edit Product
-│   └── Delete Product
-├── 3. Expense Management
-│   ├── Add New Expense
-│   ├── View All Expenses
-│   └── Delete Expense
-├── 4. Reports
-│   ├── Daily Report
-│   ├── All Sales Report
-│   ├── Financial Summary
-│   ├── Best Selling Products
-│   └── Credit Sales (Debts)
-└── 5. Data Management
-    ├── Export Data
-    ├── Import Data
-    └── Clear All Data
+sales-management-system/
+├── main.cpp                 # Complete application source code
+├── CMakeLists.txt          # CMake build configuration
+├── README.md               # This documentation
+├── requirements.txt        # System requirements (for reference)
+├── .gitignore              # Git ignore patterns
+├── sales_data.json         # Auto-generated data file
+├── build/                  # CMake build directory
+│   ├── CMakeCache.txt      # CMake cache
+│   ├── Makefile            # Generated Makefile
+│   └── bin/
+│       └── sales_system    # Compiled executable
+└── docs/                   # Additional documentation
+    ├── INSTALLATION.md     # Detailed installation guide
+    ├── USER_GUIDE.md       # Complete user manual
+    └── API_REFERENCE.md    # Code documentation
 ```
 
-## Sample Workflow
+### Data Files
 
-1. **Setup Inventory**:
-   - Go to Inventory Management
-   - Add your products with prices and stock quantities
+#### sales_data.json
+```json
+{
+  "inventory": [
+    {"id": 1, "name": "Sample Product", "price": 100.00, "stock": 10}
+  ],
+  "sales": 0,
+  "expenses": 0
+}
+```
 
-2. **Make a Sale**:
-   - Go to Sales Management
-   - Add products to cart
-   - Complete the sale (cash or credit)
-   - Print invoice
+## 🌐 Arabic Support
 
-3. **Record Expenses**:
-   - Go to Expense Management
-   - Add business expenses
+### Terminal Configuration
 
-4. **View Reports**:
-   - Check daily, weekly, or custom period reports
-   - Monitor best-selling products
-   - Track outstanding credit sales
+#### Windows
+```cmd
+# Use Windows Terminal or PowerShell with UTF-8
+chcp 65001
+```
 
-## Data Storage
+#### Linux
+```bash
+# Most modern distributions support UTF-8 by default
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+```
 
-- **File**: `sales_data.json` (created automatically)
-- **Format**: JSON format for easy backup and portability
-- **Location**: Same directory as the executable
+#### macOS
+```bash
+# Terminal.app supports UTF-8 by default
+# For best results, use iTerm2
+```
 
-## Features Comparison with Original HTML Version
+### Font Recommendations
+- **Windows**: Consolas, Cascadia Code, DejaVu Sans Mono
+- **Linux**: Ubuntu Mono, DejaVu Sans Mono, Liberation Mono
+- **macOS**: SF Mono, Menlo, Monaco
 
-| Feature | HTML Version | C++ Version | Status |
-|---------|-------------|-------------|--------|
-| Sales Management | ✅ | ✅ | Complete |
-| Inventory Management | ✅ | ✅ | Complete |
-| Expense Tracking | ✅ | ✅ | Complete |
-| Reports | ✅ | ✅ | Complete |
-| Data Persistence | localStorage | JSON file | Complete |
-| Invoice Printing | Browser print | Console output | Adapted |
-| Multi-language UI | Arabic/English | Arabic/English | Complete |
-| Date/Time tracking | ✅ | ✅ | Complete |
+## 🔧 Troubleshooting
 
-## Technical Details
+### Compilation Issues
 
-- **Language**: C++11
-- **Architecture**: Object-oriented design with separate classes for Product, Sale, Expense, and SalesManager
-- **Data Storage**: JSON-like text format for cross-platform compatibility
-- **Memory Management**: Automatic memory management using STL containers
-- **Platform Support**: Cross-platform (Windows, Linux, macOS)
+#### "C++11 not supported"
+```bash
+# Update your compiler
+# Ubuntu/Debian
+sudo apt update && sudo apt install build-essential
 
-## Troubleshooting
+# CentOS/RHEL
+sudo yum install gcc-c++
 
-### Build Issues
-- Ensure you have a C++11 compatible compiler
-- Check that CMake is properly installed
-- Verify file permissions for the build directory
+# macOS
+xcode-select --install
+```
+
+#### "CMake not found"
+```bash
+# Ubuntu/Debian
+sudo apt install cmake
+
+# CentOS/RHEL
+sudo yum install cmake
+
+# macOS with Homebrew
+brew install cmake
+
+# Windows
+# Download from https://cmake.org/download/
+```
 
 ### Runtime Issues
-- Check file permissions for data storage
-- Ensure the application has write access to the current directory
-- Clear the `sales_data.json` file if data corruption occurs
 
-## Contributing
+#### "Permission denied"
+```bash
+# Make executable
+chmod +x sales_system
+```
 
-This is a direct conversion of the HTML-based sales management system. The application maintains the same functionality and user interface patterns as the original web application.
+#### "Cannot create sales_data.json"
+```bash
+# Check write permissions
+ls -la
+chmod 755 .
+```
 
-## License
+#### "Arabic text not displaying"
+```bash
+# Check terminal encoding
+locale
+echo $LANG
 
-This project maintains the same license terms as the original HTML version.
+# Set UTF-8 encoding
+export LANG=en_US.UTF-8
+```
 
-## Arabic Interface Notes
+### Performance Issues
 
-The application supports Arabic text in the console interface. For best results:
-- Use a terminal that supports UTF-8 encoding
-- On Windows, use Windows Terminal or PowerShell with UTF-8 support
-- On Linux/Mac, most modern terminals support Arabic text display
+#### "Application slow to start"
+- Compile with optimization: `g++ -O3`
+- Check available memory: `free -h`
+- Close unnecessary applications
+
+#### "Large data file"
+- Use Export/Import functionality
+- Clear old data regularly
+- Backup important data
+
+### Data Recovery
+
+#### Corrupted sales_data.json
+```bash
+# Backup corrupted file
+mv sales_data.json sales_data.json.backup
+
+# Start application (creates new file)
+./sales_system
+
+# Try to recover data manually by editing JSON
+```
+
+## 📈 Performance Tips
+
+- **Regular Maintenance**: Clear old data periodically
+- **Backup Strategy**: Export data weekly
+- **Hardware**: SSD storage recommended for large datasets
+- **Terminal**: Use a modern terminal emulator for best performance
+
+## 🤝 Contributing
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/AmazingFeature`)
+3. **Commit** your changes (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** to the branch (`git push origin feature/AmazingFeature`)
+5. **Open** a Pull Request
+
+### Development Guidelines
+- Follow C++11 standard
+- Use consistent indentation (4 spaces)
+- Add comments for complex logic
+- Test on multiple platforms
+- Update documentation
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Original HTML/JavaScript version developers
+- C++ Standard Library contributors
+- CMake development team
+- UTF-8 and internationalization support communities
+
+## 📞 Support
+
+For support and questions:
+- **Issues**: Create a GitHub issue
+- **Documentation**: Check the `/docs` folder
+- **Community**: Join our discussions
 
 ---
 
 **نظام إدارة المبيعات والمصروفات - النسخة المكتبية**
 
-تم تحويل النظام من تطبيق ويب إلى تطبيق سطح مكتب مع الحفاظ على جميع الخصائص والوظائف الأساسية.
+تم تحويل النظام من تطبيق ويب إلى تطبيق سطح مكتب مع الحفاظ على جميع الخصائص والوظائف الأساسية. النظام يدعم اللغة العربية بالكامل ويعمل على جميع أنظمة التشغيل الرئيسية.
+
+**الخصائص الرئيسية:**
+- إدارة شاملة للمبيعات والمخزون
+- تتبع المصروفات والأرباح
+- تقارير مالية مفصلة
+- دعم المبيعات النقدية والآجلة
+- واجهة باللغتين العربية والإنجليزية

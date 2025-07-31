@@ -1,0 +1,241 @@
+# Sales & Expense Management System - Requirements
+# نظام إدارة المبيعات والمصروفات - متطلبات النظام
+
+# ============================================================================
+# SYSTEM REQUIREMENTS / متطلبات النظام
+# ============================================================================
+
+[System]
+# Operating Systems / أنظمة التشغيل
+Windows >= 10.0
+Linux >= Ubuntu 18.04 LTS (or equivalent)
+macOS >= 10.14 (Mojave)
+
+# Hardware Requirements / متطلبات الأجهزة
+Memory >= 512MB RAM
+Storage >= 50MB free disk space
+Processor: Any modern x86/x64 CPU
+
+# Terminal Requirements / متطلبات المحطة الطرفية
+Terminal: UTF-8 compatible terminal emulator
+Encoding: UTF-8 support for Arabic text display
+
+# ============================================================================
+# DEVELOPMENT REQUIREMENTS / متطلبات التطوير
+# ============================================================================
+
+[Compilers]
+# C++ Compiler / مُجمع C++
+GCC >= 7.0 (Linux/macOS)
+Clang >= 6.0 (macOS/Linux)
+MSVC >= 2017 (Visual Studio 2017+) (Windows)
+MinGW-w64 >= 8.0 (Windows alternative)
+
+# C++ Standard / معيار C++
+Standard: C++11 or higher
+Features: STL, iostream, fstream, vector, string, algorithm
+
+[Build Tools]
+# CMake (Optional but recommended) / أدوات البناء
+CMake >= 3.10
+Make (Linux/macOS)
+Ninja (Optional, for faster builds)
+MSBuild (Windows with Visual Studio)
+
+# ============================================================================
+# RUNTIME DEPENDENCIES / تبعيات وقت التشغيل
+# ============================================================================
+
+[Libraries]
+# Standard Libraries (included with compiler) / المكتبات القياسية
+libstdc++ (GCC)
+libc++ (Clang)
+MSVCRT (MSVC)
+
+# No external dependencies required / لا توجد تبعيات خارجية مطلوبة
+External: None
+
+# ============================================================================
+# PLATFORM-SPECIFIC REQUIREMENTS / متطلبات خاصة بالمنصة
+# ============================================================================
+
+[Windows]
+# Windows Specific / خاص بويندوز
+OS: Windows 10 (1903 or later recommended)
+Terminal: Windows Terminal, PowerShell, or Command Prompt
+Encoding: UTF-8 support (chcp 65001)
+Fonts: Consolas, Cascadia Code, or DejaVu Sans Mono
+
+# Development Tools / أدوات التطوير
+Visual Studio 2017+ (Community Edition sufficient)
+OR MinGW-w64 with MSYS2
+OR Clang with LLVM
+
+[Linux]
+# Linux Specific / خاص بلينكس
+Distributions: Ubuntu 18.04+, CentOS 7+, Fedora 30+, Debian 10+
+Package Manager: apt, yum, dnf, or equivalent
+Terminal: GNOME Terminal, Konsole, xterm, or equivalent
+Fonts: Ubuntu Mono, DejaVu Sans Mono, Liberation Mono
+
+# Development Packages / حزم التطوير
+build-essential (Ubuntu/Debian)
+gcc-c++ (CentOS/RHEL)
+cmake (if using CMake build)
+
+[macOS]
+# macOS Specific / خاص بنظام ماك
+Version: macOS 10.14 (Mojave) or later
+Xcode: Command Line Tools for Xcode
+Terminal: Terminal.app, iTerm2 (recommended)
+Fonts: SF Mono, Menlo, Monaco
+
+# Development Tools / أدوات التطوير
+Xcode Command Line Tools (xcode-select --install)
+Homebrew (optional, for package management)
+
+# ============================================================================
+# COMPILATION FLAGS / علامات التجميع
+# ============================================================================
+
+[Compiler Flags]
+# Required Flags / العلامات المطلوبة
+Standard: -std=c++11 (minimum)
+Warnings: -Wall -Wextra
+Optimization: -O2 (release), -g (debug)
+
+# Platform-specific flags / علامات خاصة بالمنصة
+Linux/macOS: -pthread (if threading is added later)
+Windows: /EHsc (MSVC exception handling)
+
+# ============================================================================
+# FILE PERMISSIONS / صلاحيات الملفات
+# ============================================================================
+
+[Permissions]
+# Required Permissions / الصلاحيات المطلوبة
+Read: Current directory (for reading sales_data.json)
+Write: Current directory (for creating/updating sales_data.json)
+Execute: Application binary (sales_system or sales_system.exe)
+
+# Security / الأمان
+Network: None required (standalone application)
+System: No special privileges required
+
+# ============================================================================
+# TESTING REQUIREMENTS / متطلبات الاختبار
+# ============================================================================
+
+[Testing]
+# Test Environments / بيئات الاختبار
+Primary: Ubuntu 20.04 LTS with GCC 9.x
+Secondary: Windows 10 with MSVC 2019
+Tertiary: macOS 11+ with Clang
+
+# Test Data / بيانات الاختبار
+JSON: Valid JSON parser for sales_data.json
+Encoding: UTF-8 text handling
+Locale: Arabic and English text support
+
+# ============================================================================
+# OPTIONAL ENHANCEMENTS / تحسينات اختيارية
+# ============================================================================
+
+[Optional]
+# Performance / الأداء
+Compiler: GCC 9+ or Clang 10+ for better optimization
+Build: Ninja build system for faster compilation
+Storage: SSD recommended for large datasets
+
+# Development / التطوير
+IDE: Visual Studio Code, CLion, Qt Creator
+Debugger: GDB (Linux/macOS), MSVC Debugger (Windows)
+Version Control: Git (recommended)
+
+# Fonts / الخطوط
+Arabic: Fonts with Arabic script support
+Monospace: Fixed-width fonts for better alignment
+
+# ============================================================================
+# PACKAGE INSTALLATION COMMANDS / أوامر تثبيت الحزم
+# ============================================================================
+
+[Installation Commands]
+# Ubuntu/Debian
+apt: sudo apt update && sudo apt install build-essential cmake
+
+# CentOS/RHEL
+yum: sudo yum install gcc-c++ cmake
+
+# Fedora
+dnf: sudo dnf install gcc-c++ cmake
+
+# macOS with Homebrew
+brew: brew install cmake (Xcode CLI tools required)
+
+# Windows
+# Download Visual Studio Community or MinGW-w64
+# Download CMake from https://cmake.org/download/
+
+# ============================================================================
+# VERSION COMPATIBILITY / توافق الإصدارات
+# ============================================================================
+
+[Compatibility]
+# Backward Compatibility / التوافق مع الإصدارات السابقة
+C++11: Full compatibility
+C++14: Compatible (auto lambda parameters supported)
+C++17: Compatible (no features used)
+C++20: Compatible (no new features required)
+
+# Compiler Versions / إصدارات المُجمع
+GCC: 7.x, 8.x, 9.x, 10.x, 11.x tested
+Clang: 6.x, 7.x, 8.x, 9.x, 10.x tested
+MSVC: 2017, 2019, 2022 tested
+
+# ============================================================================
+# TROUBLESHOOTING / استكشاف الأخطاء وإصلاحها
+# ============================================================================
+
+[Common Issues]
+# Compilation Errors / أخطاء التجميع
+"C++11 not supported": Upgrade compiler or use -std=c++11
+"CMake not found": Install CMake from package manager
+"Permission denied": chmod +x sales_system
+
+# Runtime Errors / أخطاء وقت التشغيل
+"Cannot create file": Check write permissions in directory
+"Arabic text garbled": Set terminal encoding to UTF-8
+"Segmentation fault": Usually indicates data corruption in sales_data.json
+
+# Performance Issues / مشاكل الأداء
+"Slow startup": Compile with -O2 or -O3 optimization
+"Large memory usage": Clear old data or increase system RAM
+
+# ============================================================================
+# VALIDATION CHECKLIST / قائمة التحقق من الصحة
+# ============================================================================
+
+[Validation]
+□ C++11 compatible compiler installed
+□ CMake 3.10+ installed (if using CMake build)
+□ UTF-8 terminal support verified
+□ Write permissions in target directory
+□ 512MB+ RAM available
+□ 50MB+ disk space available
+□ Arabic font support in terminal (optional but recommended)
+
+# ============================================================================
+# CONTACT & SUPPORT / التواصل والدعم
+# ============================================================================
+
+[Support]
+# For installation issues / لمشاكل التثبيت
+Documentation: README.md, docs/ folder
+Repository: GitHub issues section
+Community: Discussion forums
+
+# For development / للتطوير
+Code Style: Follow existing C++11 patterns
+Testing: Test on multiple platforms before submitting
+Documentation: Update README.md for new features

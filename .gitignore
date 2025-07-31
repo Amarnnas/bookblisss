@@ -1,0 +1,341 @@
+# Sales & Expense Management System - .gitignore
+# نظام إدارة المبيعات والمصروفات
+
+# ============================================================================
+# COMPILED BINARIES / الملفات المُجمعة
+# ============================================================================
+
+# Main executable / الملف التنفيذي الرئيسي
+sales_system
+sales_system.exe
+
+# Object files / ملفات الكائنات
+*.o
+*.obj
+*.lo
+
+# Libraries / المكتبات
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# ============================================================================
+# BUILD DIRECTORIES / مجلدات البناء
+# ============================================================================
+
+# CMake build directory / مجلد بناء CMake
+build/
+builds/
+cmake-build-*/
+cmake-build-debug/
+cmake-build-release/
+
+# Make build artifacts / مخرجات Make
+Makefile
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+
+# Ninja build files / ملفات Ninja
+build.ninja
+.ninja_deps
+.ninja_log
+
+# ============================================================================
+# COMPILER & IDE FILES / ملفات المُجمع وبيئة التطوير
+# ============================================================================
+
+# GCC/Clang
+*.gch
+*.pch
+
+# MSVC
+*.pdb
+*.idb
+*.ilk
+*.exp
+*.map
+*.aps
+*.vspscc
+*.vssscc
+*.scc
+
+# Visual Studio / فيجوال ستوديو
+.vs/
+*.vcproj
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+*.sln
+*.suo
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+*.vssscc
+$tf/
+
+# CLion / سي لايون
+.idea/
+cmake-build-*/
+
+# VS Code / فيجوال ستوديو كود
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Qt Creator / كيو تي كريتر
+CMakeLists.txt.user
+CMakeLists.txt.user.*
+
+# Code::Blocks
+*.cbp
+*.layout
+*.depend
+
+# Dev-C++
+*.dev
+
+# ============================================================================
+# DATA FILES / ملفات البيانات
+# ============================================================================
+
+# Runtime data (but keep sample) / بيانات وقت التشغيل
+sales_data.json
+*.json.backup
+*.json.bak
+
+# Logs / ملفات السجل
+*.log
+*.log.*
+logs/
+
+# Temporary data / البيانات المؤقتة
+*.tmp
+*.temp
+*.cache
+
+# ============================================================================
+# SYSTEM FILES / ملفات النظام
+# ============================================================================
+
+# Windows / ويندوز
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS / ماك
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux / لينكس
+*~
+.nfs*
+
+# ============================================================================
+# DOCUMENTATION BUILD / بناء الوثائق
+# ============================================================================
+
+# Doxygen
+doc/html/
+doc/latex/
+doc/man/
+doc/rtf/
+
+# Sphinx
+docs/_build/
+docs/build/
+
+# ============================================================================
+# PACKAGE MANAGERS / مديري الحزم
+# ============================================================================
+
+# Conan
+conandata.yml
+conanfile.txt
+conaninfo.txt
+conanbuildinfo.*
+conan.lock
+
+# vcpkg
+vcpkg_installed/
+.vcpkg-root
+
+# Hunter
+_builds/
+
+# ============================================================================
+# TESTING & COVERAGE / الاختبار والتغطية
+# ============================================================================
+
+# Test executables / ملفات الاختبار التنفيذية
+test_*
+*_test
+*_tests
+
+# Coverage files / ملفات التغطية
+*.gcov
+*.gcda
+*.gcno
+*.info
+coverage/
+htmlcov/
+
+# Google Test
+gtest/
+gmock/
+
+# ============================================================================
+# PROFILING & DEBUGGING / التنميط والتصحيح
+# ============================================================================
+
+# Profiling data / بيانات التنميط
+*.prof
+gmon.out
+perf.data*
+callgrind.out.*
+
+# Core dumps / تفريغ الذاكرة
+core
+core.*
+*.core
+*.stackdump
+
+# Address Sanitizer / مُطهر العناوين
+*.asan
+
+# Valgrind / فالجرايند
+*.memcheck
+*.helgrind
+*.drd
+
+# ============================================================================
+# BACKUP & ARCHIVE FILES / ملفات النسخ الاحتياطي والأرشيف
+# ============================================================================
+
+# Backup files / ملفات النسخ الاحتياطي
+*.bak
+*.backup
+*.orig
+*.save
+*~
+
+# Archive files / ملفات الأرشيف
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.zip
+*.rar
+*.7z
+
+# ============================================================================
+# ENVIRONMENT & CONFIG / البيئة والإعدادات
+# ============================================================================
+
+# Environment variables / متغيرات البيئة
+.env
+.env.local
+.env.*.local
+
+# Local configuration / الإعدادات المحلية
+config.local
+settings.local
+local_config.*
+
+# ============================================================================
+# EDITOR TEMPORARY FILES / ملفات المحرر المؤقتة
+# ============================================================================
+
+# Vim
+*.swp
+*.swo
+*~
+.vimrc.local
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Nano
+*.save
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Atom
+.atom/
+
+# ============================================================================
+# CUSTOM PROJECT FILES / ملفات المشروع المُخصصة
+# ============================================================================
+
+# Project-specific ignores / تجاهلات خاصة بالمشروع
+TODO.txt
+NOTES.txt
+.project-notes
+
+# Development scripts / سكريبت التطوير
+dev_*
+test_local.*
+debug_*
+
+# Local documentation / الوثائق المحلية
+docs/local/
+README.local.md
+
+# ============================================================================
+# EXCEPTIONS / الاستثناءات
+# ============================================================================
+
+# Keep these files / احتفظ بهذه الملفات
+!.gitignore
+!README.md
+!CMakeLists.txt
+!requirements.txt
+!main.cpp
+
+# Keep sample data / احتفظ ببيانات العينة
+!sample_data.json
+
+# Keep documentation templates / احتفظ بقوالب الوثائق
+!docs/templates/
+!docs/*.md
