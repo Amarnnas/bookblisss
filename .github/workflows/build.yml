@@ -1,28 +1,39 @@
-name: Build Windows EXE
+name: Build NW.js App
+
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: windows-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-      - name: List files for debugging
-        # هذه الخطوة تساعدك على التأكد من وجود ملفاتك في المسار الصحيح
-        run: ls -R
-      - name: Install NW.js Builder
-        run: npm install --save-dev nw-builder@latest
-      - name: Build Windows EXE
-        # ⚠️ هذا الأمر يفترض أن ملفاتك في المجلد الرئيسي.
-        # إذا كانت في مجلد فرعي، استبدل './' باسم المجلد، مثلاً: './src/'
-        run: npx nwbuild --platform win64 --arch x64 --mode build ./bookblisss
-      - name: Upload EXE as artifact
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app files
+        run: |
+          npm run clean
+          mkdir dist
+          xcopy src dist /E /I /Y
+          xcopy data dist\data /E /I /Y
+          copy package.json dist\package.json
+
+      - name: Package NW.js app (EXE)
+        run: npx nwbuild --src dist --out dist/build --platform win64 --flavor normal
+
+      - name: Upload EXE artifact
         uses: actions/upload-artifact@v4
         with:
-          name: bookbliss
-          path: build/
+          name: bookblisss-win64
+          path: dist/build/**
