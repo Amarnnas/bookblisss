@@ -20,7 +20,7 @@ jobs:
       - name: Build Windows EXE
         # ⚠️ هذا الأمر يفترض أن ملفاتك في المجلد الرئيسي.
         # إذا كانت في مجلد فرعي، استبدل './' باسم المجلد، مثلاً: './src/'
-        run: npx nwbuild --platform win64 --arch x64 --mode build ./BookBliss
+        run: npx nwbuild --platform win64 --arch x64 --mode build ./bookblisss
       - name: Upload EXE as artifact
         uses: actions/upload-artifact@v4
         with:
